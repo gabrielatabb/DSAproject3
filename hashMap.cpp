@@ -3,7 +3,7 @@
 
 hashMap::hashMap() {
     size = 0;
-    capacity = 10000; //initial capacity, might resize
+    capacity = 10000; //initial capacity
 }
 
 int hashMap::hash(std::string key) {
@@ -11,16 +11,21 @@ int hashMap::hash(std::string key) {
 
     for(int i = 0; i < key.length(); i++) {
         //multiplying ASCII by powers of 31
-        hashCode += int(key[i]) * 31;
+        if(int(key[i]) > 31 && int(key[i]) < 126)//doing printable ascii only
+            hashCode += int(key[i]) * 31;
+        else
+            return -1; //does not get inserted
     }
 
-    return abs(hashCode) % capacity;
+    return hashCode % capacity;
 }
 
 void hashMap::insert(std::string dataPoint) {
     int hashIndex = hash(dataPoint) % capacity;
-    container[hashIndex].push_front(std::make_pair(getASCIISum(dataPoint), dataPoint));
-    size++;
+    if(hashIndex != -1) {//making sure only printable data gets inputted to map
+        container[hashIndex].push_front(std::make_pair(getASCIISum(dataPoint), dataPoint));
+        size++;
+    }
 
     //check if the table needs to be resized
     if( (float)size/capacity > loadFactor){
