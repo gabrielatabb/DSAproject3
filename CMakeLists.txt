@@ -4,4 +4,7 @@ project(DSAproject3)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(DSAproject3
-        main.cpp)
+        main.cpp
+        Trie.cpp
+        Trie.h
+)
