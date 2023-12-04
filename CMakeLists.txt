@@ -7,5 +7,5 @@ add_executable(DSAproject3
         main.cpp
         Trie.cpp
         Trie.h
-        PasswordCracker.cpp
+        PasswordCracker.h
 )
