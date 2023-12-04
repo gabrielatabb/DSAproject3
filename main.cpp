@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include "hashMap.h"
 //GABBY LAND
 
 int main(){
@@ -9,6 +10,7 @@ int main(){
         std::cout << "file failed to open";
     }
 
+hashMap hashMap(data);
 
     return 0;
 }
