@@ -8,5 +8,7 @@ int main(){
     if(!data.is_open()){
         std::cout << "file failed to open";
     }
+
+
     return 0;
 }
