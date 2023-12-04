@@ -20,5 +20,13 @@ int main(){
 
     //hashMap.visualizeHashTable();
 
+    std::cout << "Enter a password: ";
+
+    std::string userPass;
+    std::cin >> userPass;
+
+    hashMap.compare(userPass);
+
+
     return 0;
 }
