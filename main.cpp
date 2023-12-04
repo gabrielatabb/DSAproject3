@@ -12,10 +12,13 @@ int main(){
 
     hashMap hashMap;
     std::string dataPoint;
+
     while (data){
         data >> dataPoint;
         hashMap.insert(dataPoint);
     }
+
+    //hashMap.visualizeHashTable();
 
     return 0;
 }
