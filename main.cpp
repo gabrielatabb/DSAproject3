@@ -20,12 +20,24 @@ int main(){
 
     //hashMap.visualizeHashTable();
 
-    std::cout << "Enter a password: ";
+    int option;
+    while (option != 2){
+    std::cout << "\nChoose an option: \n";
+    std::cout << "1 - Enter a password\n";
+    std::cout << "2 - Quit\n";
+    std::cin >> option;
 
-    std::string userPass;
-    std::cin >> userPass;
+    if(option == 1){
+        std::cout << "Enter a password: ";
 
-    hashMap.compare(userPass);
+        std::string userPass;
+        std::cin >> userPass;
+        hashMap.compare(userPass);
+        }
+
+    }
+
+
 
 
     return 0;
