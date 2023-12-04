@@ -7,7 +7,8 @@
 #pragma once
 #include <iostream>
 #include <string>
-const int ALPHABET = 26; //this will be changed later. A-Z, a-z, 0-9, !@#$%&_
+const int ALPHABET = 95; //this will be changed later. printable ASCII characters 32 to 126. 126-32+1 = 95
+const int ASCII_OFFSET = 32;
 
 
 struct Node{
@@ -22,6 +23,7 @@ public:
     Trie();
     void insert(std::string password);
     bool search(std::string password);
+    static bool allowed(std::string password);
 
 
 private:
