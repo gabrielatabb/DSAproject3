@@ -2,22 +2,28 @@
 // Created by Diego Santos Gonzalez on 12/3/23.
 //
 
-//Trie was chosen because the time complexity for searching is insane (O(key length)!!!!!!!!!)
+//Trie was chosen because the time complexity for searching is insane (O(password length)!!!!!!!!!)
+
 #pragma once
 #include <iostream>
-const int ALPHABET_SIZE = 26;
+#include <string>
+const int ALPHABET = 26; //this will be changed later. A-Z, a-z, 0-9, !@#$%&_
+
+
+struct Node{
+    Node* children[ALPHABET];
+    bool leaf;
+
+    Node();
+};
 
 class Trie {
-
-    struct Node{
-        Node* children = new Node[ALPHABET_SIZE];
-        bool endOfWord = 0;
-
-        Node(){
-            for(Node n: children)
-                n = nullptr;
-        }
-    };
+public:
+    Trie();
+    void insert(std::string password);
+    bool search(std::string password);
 
 
+private:
+    Node* root;
 };
