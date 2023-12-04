@@ -18,7 +18,7 @@ int main(){
         hashMap.insert(dataPoint);
     }
 
-    //hashMap.visualizeHashTable();
+    hashMap.visualizeHashTable();
 
     int option;
     while (option != 2){
