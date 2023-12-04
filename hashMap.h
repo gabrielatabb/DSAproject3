@@ -9,6 +9,7 @@ class hashMap {
     std::unordered_map<int, std::forward_list<std::string>> hashTable;
 public:
     hashMap();
+    void resize();
     int hash(std::string key);
     void insert(std::string dataPoint);
 };

@@ -2,18 +2,21 @@
 #include "hashMap.h"
 
 hashMap::hashMap() {
-    capacity = 10;
+    capacity = 100; //initial capacity is 10
 }
 
 int hashMap::hash(std::string key) {
-    int hashIndex = 0;
+   long hashCode = 0;
+
     for(int i = 0; i < key.length(); i++) {
         //multiplying ASCII by powers of 31
-        hashIndex += key[i] * pow(31, key.length() - (i + 1));
+        hashCode += int(key[i]) * 31;
     }
-    return hashIndex;
+
+    return abs(hashCode) % capacity;
 }
 
 void hashMap::insert(std::string dataPoint) {
-    std::cout << dataPoint << " ";
+    int hashIndex = hash(dataPoint) % capacity;
+    std::cout << hashIndex << " ";
 }
