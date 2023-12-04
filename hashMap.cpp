@@ -19,7 +19,7 @@ int hashMap::hash(std::string key) {
 
 void hashMap::insert(std::string dataPoint) {
     int hashIndex = hash(dataPoint) % capacity;
-    hashTable[hashIndex].push_front(std::make_pair(getASCIISum(dataPoint), dataPoint));
+    container[hashIndex].push_front(std::make_pair(getASCIISum(dataPoint), dataPoint));
     size++;
 
     //check if the table needs to be resized
@@ -40,10 +40,23 @@ long hashMap::getASCIISum(std::string key) {
     return sum;
 }
 
+void hashMap::compare(std::string userPass) {
+    int hashIndex = hash(userPass);
+
+    for(std::pair<long, std::string> val: container[hashIndex]) {
+        if(userPass == val.second){
+            std::cout << "Your password is common!\n";
+            return;
+        }
+    }
+    std::cout << "Your password is not common!\n";
+
+}
+
 void hashMap::visualizeHashTable(){
     std::cout << "Hashtable Visualization:" << std::endl;
 
-    for (const auto& entry : hashTable) {
+    for (const auto& entry : container) {
         std::cout << "Bucket " << entry.first << ": ";
         for (const auto& value : entry.second) {
             std::cout << value.first << ": " << value.second << " -> ";
@@ -55,14 +68,15 @@ void hashMap::visualizeHashTable(){
 }
 
 void hashMap::resize() {
-    std::unordered_map<int, std::forward_list<long>> newHashtable(capacity * 2);
+    std::unordered_map<int, std::forward_list<std::pair<long, std::string>>> newHashMap(capacity * 2);
 
-    for (auto entry: hashTable) {
-        int key = entry.first;
+    for (auto entry: container) {
         std::forward_list<std::pair<long, std::string>> values = entry.second;
 
         for(std::pair<long, std::string> val: values){
-           // int newHash = hash()
+           int newHash = hash(val.second);
+            newHashMap[newHash].push_front(val);
         }
     }
+    container.swap(newHashMap);
 }
