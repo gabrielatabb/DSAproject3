@@ -10,7 +10,12 @@ int main(){
         std::cout << "file failed to open";
     }
 
-hashMap hashMap(data);
+    hashMap hashMap;
+    std::string dataPoint;
+    while (data){
+        data >> dataPoint;
+        hashMap.insert(dataPoint);
+    }
 
     return 0;
 }
