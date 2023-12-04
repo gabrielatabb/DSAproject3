@@ -19,7 +19,7 @@ int hashMap::hash(std::string key) {
 
 void hashMap::insert(std::string dataPoint) {
     int hashIndex = hash(dataPoint) % capacity;
-    hashTable[hashIndex].push_front(getASCIISum(dataPoint));
+    hashTable[hashIndex].push_front(std::make_pair(getASCIISum(dataPoint), dataPoint));
     size++;
 
     //check if the table needs to be resized
@@ -46,7 +46,7 @@ void hashMap::visualizeHashTable(){
     for (const auto& entry : hashTable) {
         std::cout << "Bucket " << entry.first << ": ";
         for (const auto& value : entry.second) {
-            std::cout << value << " -> ";
+            std::cout << value.first << ": " << value.second << " -> ";
         }
         std::cout << "nullptr" << std::endl;
     }
@@ -55,5 +55,14 @@ void hashMap::visualizeHashTable(){
 }
 
 void hashMap::resize() {
+    std::unordered_map<int, std::forward_list<long>> newHashtable(capacity * 2);
 
+    for (auto entry: hashTable) {
+        int key = entry.first;
+        std::forward_list<std::pair<long, std::string>> values = entry.second;
+
+        for(std::pair<long, std::string> val: values){
+           // int newHash = hash()
+        }
+    }
 }

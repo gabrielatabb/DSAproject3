@@ -1,12 +1,13 @@
 #include <fstream>
 #include <forward_list>
+#include <utility>
 
 class hashMap {
     long capacity;
     long size;
     float loadFactor = 0.75f;
     std::ifstream data;
-    std::unordered_map<int, std::forward_list<long>> hashTable;
+    std::unordered_map<int, std::forward_list<std::pair<long, std::string>>> hashTable;
 public:
     hashMap();
     void resize();
