@@ -63,6 +63,13 @@ build CMakeFiles\DSAproject3.dir\hashMap.cpp.obj: CXX_COMPILER__DSAproject3_unsc
   TARGET_COMPILE_PDB = CMakeFiles\DSAproject3.dir\
   TARGET_PDB = DSAproject3.pdb
 
+build CMakeFiles\DSAproject3.dir\Trie.cpp.obj: CXX_COMPILER__DSAproject3_unscanned_Debug C$:\Users\ryan0\source\repos\gabrielatabb\DSAproject3\Trie.cpp || cmake_object_order_depends_target_DSAproject3
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi
+  OBJECT_DIR = CMakeFiles\DSAproject3.dir
+  OBJECT_FILE_DIR = CMakeFiles\DSAproject3.dir
+  TARGET_COMPILE_PDB = CMakeFiles\DSAproject3.dir\
+  TARGET_PDB = DSAproject3.pdb
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target DSAproject3
@@ -71,7 +78,7 @@ build CMakeFiles\DSAproject3.dir\hashMap.cpp.obj: CXX_COMPILER__DSAproject3_unsc
 #############################################
 # Link the executable DSAproject3.exe
 
-build DSAproject3.exe: CXX_EXECUTABLE_LINKER__DSAproject3_Debug CMakeFiles\DSAproject3.dir\main.cpp.obj CMakeFiles\DSAproject3.dir\hashMap.cpp.obj
+build DSAproject3.exe: CXX_EXECUTABLE_LINKER__DSAproject3_Debug CMakeFiles\DSAproject3.dir\main.cpp.obj CMakeFiles\DSAproject3.dir\hashMap.cpp.obj CMakeFiles\DSAproject3.dir\Trie.cpp.obj
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
