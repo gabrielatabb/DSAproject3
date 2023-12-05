@@ -5,4 +5,7 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_executable(DSAproject3 main.cpp
         hashMap.h
-        hashMap.cpp "Trie.cpp" "Trie.h")
+        hashMap.cpp
+        Trie.cpp
+        Trie.cpp
+        PasswordCracker.h)

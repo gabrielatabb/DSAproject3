@@ -2,6 +2,8 @@
 #include <forward_list>
 #include <utility>
 
+#pragma once
+
 class hashMap {
     long capacity;
     long size;
@@ -13,7 +15,7 @@ public:
     void resize();
     void visualizeHashTable();
     int hash(std::string key);
-    void compare(std::string userPass);
+    bool compare(std::string userPass);
     void insert(std::string dataPoint);
     long getASCIISum(std::string key);
 };

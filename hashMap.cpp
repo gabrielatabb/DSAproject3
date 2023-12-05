@@ -45,17 +45,18 @@ long hashMap::getASCIISum(std::string key) {
     return sum;
 }
 
-void hashMap::compare(std::string userPass) {
+bool hashMap::compare(std::string userPass) {
     int hashIndex = hash(userPass);
 
     for(std::pair<long, std::string> val: container[hashIndex]) {
         if(userPass == val.second){
-            std::cout << "Your password is common!\n";
-            return;
+            std::cout << "Your password could be guessed immediately." << std::endl;
+            std::cout << "Keep in mind, using longer passwords and special characters can make your password more secure. "
+                         "Additionally, avoid using common words." << std::endl;
+            return true;
         }
     }
-    std::cout << "Your password is not common!\n";
-
+    return false;
 }
 
 void hashMap::visualizeHashTable(){

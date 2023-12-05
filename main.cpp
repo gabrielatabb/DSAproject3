@@ -1,39 +1,73 @@
 #include <iostream>
 #include <fstream>
 #include "hashMap.h"
+#include "Trie.h"
+#include "PasswordCracker.h"
+using namespace std::chrono;
 //GABBY LAND
 
 int main(){
+
     std::ifstream data("100kpasswords.txt");
 
     if(!data.is_open()){
         std::cout << "file failed to open";
     }
 
+    //create our two data structures
+    Trie commonPasswords;
+    //hashMap hashPasswords
     hashMap hashMap;
+
     std::string dataPoint;
 
     while (data){
         data >> dataPoint;
-        hashMap.insert(dataPoint);
+        if(Trie::allowed(dataPoint)) {
+            commonPasswords.insert(dataPoint);
+            hashMap.insert(dataPoint);
+        }
+
     }
 
-    hashMap.visualizeHashTable();
+    //hashMap.visualizeHashTable();
 
     int option;
     while (option != 2){
-    std::cout << "\nChoose an option: \n";
-    std::cout << "1 - Enter a password\n";
-    std::cout << "2 - Quit\n";
-    std::cin >> option;
+        std::cout << "\nIs your password secure?" << std::endl;
+        std::cout << "1 - Enter your password. This will definitely not be stored afterwards. Trust us." << std::endl;
+        std::cout << "2 - Quit\n";
+        std::cin >> option;
 
-    if(option == 1){
-        std::cout << "Enter a password: ";
+    if(option == 1) {
+        std::cout << "\nEnter a password: ";
 
         std::string userPass;
         std::cin >> userPass;
-        hashMap.compare(userPass);
+
+        std::cout << "\nChecking password security with Hash Map: " << std::endl;
+        auto startHash = high_resolution_clock::now();
+
+        if(!hashMap.compare(userPass)){
+            BruteForceAttack(userPass);
         }
+        auto stopHash = high_resolution_clock::now();
+        auto durationHash = duration_cast<microseconds>(stopHash - startHash);
+        std::cout << "   Time taken by function: "
+             << durationHash.count() << " microseconds" << std::endl;
+
+
+        std::cout << "\nChecking password security with a Trie: " << std::endl;
+        auto startTrie = high_resolution_clock::now();
+
+        if (!DictionaryAttack(userPass, commonPasswords)) {
+            BruteForceAttack(userPass);
+        }
+        auto stopTrie = high_resolution_clock::now();
+        auto durationTrie = duration_cast<microseconds>(stopTrie - startTrie);
+        std::cout << "   Time taken by function: "
+                  << durationTrie.count() << " microseconds" << std::endl;
+    }
 
     }
 
