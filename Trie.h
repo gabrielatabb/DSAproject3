@@ -3,7 +3,6 @@
 //
 
 //Trie was chosen because the time complexity for searching is insane (O(password length)!!!!!!!!!)
-
 #pragma once
 #include <iostream>
 #include <string>
