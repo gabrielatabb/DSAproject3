@@ -53,7 +53,7 @@ int main(){
         }
         auto stopHash = high_resolution_clock::now();
         auto durationHash = duration_cast<microseconds>(stopHash - startHash);
-        std::cout << "   Time taken by function: "
+        std::cout << "   Time taken by Hash Map: "
              << durationHash.count() << " microseconds" << std::endl;
 
 
@@ -65,7 +65,7 @@ int main(){
         }
         auto stopTrie = high_resolution_clock::now();
         auto durationTrie = duration_cast<microseconds>(stopTrie - startTrie);
-        std::cout << "   Time taken by function: "
+        std::cout << "   Time taken by Trie: "
                   << durationTrie.count() << " microseconds" << std::endl;
     }
 
