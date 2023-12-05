@@ -73,7 +73,7 @@ void hashMap::visualizeHashTable(){
     std::cout << std::endl;
 }
 
-void hashMap::resize() {
+void hashMap::resize() { //rehash
     std::unordered_map<int, std::forward_list<std::pair<long, std::string>>> newHashMap(capacity * 2);
 
     for (auto entry: container) {
